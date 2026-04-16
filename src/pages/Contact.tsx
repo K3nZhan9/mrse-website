@@ -42,14 +42,36 @@ export default function Contact() {
     name: '', company: '', phone: '', email: '', service: '', message: ''
   })
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setSubmitting(true)
+    setError('')
+
+    try {
+      const res = await fetch('/.netlify/functions/send-contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      })
+      const data = await res.json()
+
+      if (data.success) {
+        setSubmitted(true)
+      } else {
+        setError(data.error || '提交失败，请稍后重试')
+      }
+    } catch {
+      setError('网络错误，请检查网络连接后重试')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -161,6 +183,15 @@ export default function Contact() {
                 <>
                   <h2 style={{ fontSize: 24, fontWeight: 800, color: '#1a3a5c', marginBottom: 8 }}>在线咨询</h2>
                   <p style={{ color: '#64748b', fontSize: 14, marginBottom: 28 }}>填写以下信息，我们将尽快与您联系</p>
+
+                  {error && (
+                    <div style={{
+                      background: '#fef2f2', border: '1px solid #fca5a5', borderRadius: 8,
+                      padding: '12px 16px', marginBottom: 20, color: '#dc2626', fontSize: 14
+                    }}>
+                      {error}
+                    </div>
+                  )}
 
                   <form onSubmit={handleSubmit}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 20, marginBottom: 20 }} className="form-grid">
@@ -277,16 +308,17 @@ export default function Contact() {
 
                     <button
                       type="submit"
+                      disabled={submitting}
                       style={{
                         width: '100%', padding: '14px', borderRadius: 8, border: 'none',
-                        background: 'linear-gradient(135deg, #1a3a5c, #2563a8)',
-                        color: '#fff', fontSize: 16, fontWeight: 700, cursor: 'pointer',
+                        background: submitting ? '#94a3b8' : 'linear-gradient(135deg, #1a3a5c, #2563a8)',
+                        color: '#fff', fontSize: 16, fontWeight: 700, cursor: submitting ? 'not-allowed' : 'pointer',
                         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                         transition: 'all 0.3s', letterSpacing: 1
                       }}
                     >
                       <Send size={18} />
-                      立即提交咨询
+                      {submitting ? '提交中...' : '立即提交咨询'}
                     </button>
 
                     <p style={{ textAlign: 'center', color: '#94a3b8', fontSize: 12, marginTop: 16 }}>
