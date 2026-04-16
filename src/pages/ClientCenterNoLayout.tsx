@@ -1,7 +1,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Search, Building2, FileText, ShieldCheck, ChevronRight, Star, ArrowRight, Loader2
+  Search, Building2, FileText, ShieldCheck, Star, ArrowRight, Loader2
 } from 'lucide-react';
 
 // 飞书应用配置

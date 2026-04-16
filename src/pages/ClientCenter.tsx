@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import Layout from '../components/Layout';
 
 // 模拟数据 - 实际使用时可以从API或JSON文件加载
