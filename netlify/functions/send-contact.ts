@@ -1,7 +1,7 @@
 import { Handler, HandlerEvent, HandlerContext } from "@netlify/functions";
 
-const RESEND_API_KEY = "re_jSkfZ9rV_BqSxrRbaq2bWNuKXj4aaXYfc";
-const TO_EMAIL = "17857204668@163.com";
+const RESEND_API_KEY = "re_JWUTD3mV_NL2Y9NBueBQaPvjR9xZky8U2";
+const TO_EMAIL = "13366425856@163.com";
 const FROM_EMAIL = "onboarding@resend.dev";
 
 const headers = {
