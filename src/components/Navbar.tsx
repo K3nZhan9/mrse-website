@@ -52,7 +52,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <a href="tel:19912123125" style={{
+          <Link to="/contact" style={{
             display: 'flex', alignItems: 'center', gap: 6,
             marginLeft: 16, padding: '8px 20px',
             background: '#1a3a5c', color: '#fff', borderRadius: 4,
@@ -61,7 +61,7 @@ export default function Navbar() {
           }}>
             <Phone size={15} />
             免费咨询
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile Menu Button */}
