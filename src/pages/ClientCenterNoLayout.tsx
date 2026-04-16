@@ -31,6 +31,41 @@ const extractFieldValue = (field: any): string => {
   return String(field);
 };
 
+const formatDate = (field: any): string => {
+  if (!field) return '';
+  if (typeof field === 'number') {
+    // 飞书日期字段返回的是毫秒时间戳
+    if (field > 1e12) {
+      const d = new Date(field);
+      if (!isNaN(d.getTime())) {
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      }
+    }
+    return String(field);
+  }
+  if (typeof field === 'string') {
+    // 如果已经是可读日期格式就直接返回
+    if (/^\d{4}[-/]\d{2}[-/]\d{2}/.test(field)) return field;
+    // 尝试解析时间戳字符串
+    const num = Number(field);
+    if (!isNaN(num) && num > 1e12) {
+      const d = new Date(num);
+      if (!isNaN(d.getTime())) {
+        return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      }
+    }
+    return field;
+  }
+  // 飞书日期对象可能的结构 { timestamp: 1735689600000 }
+  if (field.timestamp) {
+    const d = new Date(field.timestamp);
+    if (!isNaN(d.getTime())) {
+      return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+    }
+  }
+  return String(field);
+};
+
 const extractNumber = (field: any): string => {
   if (!field) return '';
   if (typeof field === 'number') return String(field);
@@ -149,10 +184,10 @@ const ClientCenterNoLayout = () => {
       .map(r => ({
         '专利号': extractFieldValue(r.fields['专利号']),
         '专利名称': extractFieldValue(r.fields['专利名称']),
-        '年费到期日': extractFieldValue(r.fields['年费到期日']),
+        '年费到期日': formatDate(r.fields['年费到期日']),
         '缴费金额': extractNumber(r.fields['缴费金额']),
         '通知状态': extractFieldValue(r.fields['通知状态']),
-        '缴费截止日': extractFieldValue(r.fields['缴费截止日']),
+        '缴费截止日': formatDate(r.fields['缴费截止日']),
       }));
   }, [selectedCompany, allRecords]);
 
