@@ -332,7 +332,7 @@ export default function Home() {
           </p>
           <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link to="/contact" className="btn-primary">立即免费咨询</Link>
-            <a href="tel:0312-12345678" className="btn-outline">电话：0312-12345678</a>
+            <a href="tel:19912123125" className="btn-outline">电话：19912123125</a>
           </div>
         </div>
       </section>

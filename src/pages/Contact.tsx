@@ -11,12 +11,12 @@ const contactInfo = [
   {
     icon: <Phone size={24} />,
     title: '联系电话',
-    lines: ['0312-12345678', '工作日 9:00 - 18:00'],
+    lines: ['19912123125', '工作日 9:00 - 18:00'],
   },
   {
     icon: <Mail size={24} />,
     title: '电子邮箱',
-    lines: ['service@mashi-ip.com', '24小时接收您的咨询'],
+    lines: ['13366425856@163.com', '24小时接收您的咨询'],
   },
   {
     icon: <Clock size={24} />,

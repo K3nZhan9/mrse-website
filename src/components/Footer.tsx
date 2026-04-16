@@ -80,11 +80,11 @@ export default function Footer() {
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Phone size={16} style={{ color: '#c8a951', flexShrink: 0 }} />
-                <a href="tel:0312-12345678" style={{ fontSize: 14, color: '#94a3b8', textDecoration: 'none' }}>0312-12345678</a>
+                <a href="tel:19912123125" style={{ fontSize: 14, color: '#94a3b8', textDecoration: 'none' }}>19912123125</a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Mail size={16} style={{ color: '#c8a951', flexShrink: 0 }} />
-                <a href="mailto:service@mashi-ip.com" style={{ fontSize: 14, color: '#94a3b8', textDecoration: 'none' }}>service@mashi-ip.com</a>
+                <a href="mailto:13366425856@163.com" style={{ fontSize: 14, color: '#94a3b8', textDecoration: 'none' }}>13366425856@163.com</a>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
                 <Clock size={16} style={{ color: '#c8a951', flexShrink: 0 }} />
