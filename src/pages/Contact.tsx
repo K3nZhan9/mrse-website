@@ -139,13 +139,12 @@ export default function Contact() {
                 padding: 24, textAlign: 'center'
               }}>
                 <div style={{
-                  width: 100, height: 100,
-                  background: 'rgba(255,255,255,0.1)',
-                  borderRadius: 12, margin: '0 auto 12px',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  color: '#94a3b8', fontSize: 12, border: '2px dashed rgba(255,255,255,0.2)'
+                  width: 160, height: 160, borderRadius: 12, margin: '0 auto 12px',
+                  overflow: 'hidden', border: '2px solid rgba(200,169,81,0.3)'
                 }}>
-                  微信二维码
+                  <img src="/wechat-qr.png" alt="微信二维码" style={{
+                    width: '100%', height: '100%', objectFit: 'cover', display: 'block'
+                  }} />
                 </div>
                 <div style={{ color: '#fff', fontWeight: 600, fontSize: 14, marginBottom: 4 }}>扫码添加微信</div>
                 <div style={{ color: '#94a3b8', fontSize: 12 }}>在线咨询更便捷</div>
