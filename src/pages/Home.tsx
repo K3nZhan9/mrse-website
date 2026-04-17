@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom'
 import {
   Shield, Award, FileText, TrendingUp,
-  ChevronRight, CheckCircle, Star, Users, Trophy, Briefcase
+  ChevronRight, CheckCircle, Star, Users, Trophy, Briefcase,
+  Sparkles, Zap, Target, ArrowRight
 } from 'lucide-react'
 
 const services = [
@@ -155,6 +156,169 @@ export default function Home() {
           @media (max-width: 768px) {
             .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
             .hero-right { display: none !important; }
+          }
+        `}</style>
+      </section>
+
+      {/* AI Policy Radar Section */}
+      <section style={{
+        padding: '60px 0',
+        background: 'linear-gradient(135deg, #fefce8 0%, #fff7ed 50%, #fef3c7 100%)',
+        position: 'relative',
+        overflow: 'hidden',
+      }}>
+        {/* Background decoration */}
+        <div style={{
+          position: 'absolute', top: -50, right: -50,
+          width: 300, height: 300, borderRadius: '50%',
+          background: 'rgba(200,169,81,0.08)', pointerEvents: 'none'
+        }} />
+        <div style={{
+          position: 'absolute', bottom: -80, left: -80,
+          width: 250, height: 250, borderRadius: '50%',
+          background: 'rgba(200,169,81,0.06)', pointerEvents: 'none'
+        }} />
+
+        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', position: 'relative', zIndex: 1 }}>
+          <div style={{
+            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 50, alignItems: 'center'
+          }} className="radar-grid">
+            {/* Left: Info */}
+            <div>
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                background: 'rgba(200,169,81,0.15)', border: '1px solid rgba(200,169,81,0.3)',
+                padding: '6px 16px', borderRadius: 20, marginBottom: 20
+              }}>
+                <Sparkles size={14} style={{ color: '#b45309' }} />
+                <span style={{ color: '#92400e', fontSize: 13, fontWeight: 600 }}>AI 智能分析 · 一键匹配</span>
+              </div>
+
+              <h2 style={{
+                fontSize: 'clamp(1.6rem, 3vw, 2.4rem)',
+                fontWeight: 800, color: '#1a3a5c', lineHeight: 1.3,
+                marginBottom: 16
+              }}>
+                AI 政策雷达<br />
+                <span style={{ color: '#b45309' }}>测测你的企业能拿多少补贴</span>
+              </h2>
+
+              <p style={{ color: '#57534e', fontSize: 15, lineHeight: 1.9, marginBottom: 28, maxWidth: 480 }}>
+                输入企业基本信息，AI 智能分析匹配国家及地方政策，自动生成《政策匹配报告》，发现隐藏的补贴机会。
+              </p>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 32 }}>
+                {[
+                  { icon: <Zap size={18} />, text: '覆盖国科小、高新、专精特新等 20+ 政策' },
+                  { icon: <Target size={18} />, text: 'AI 智能匹配，30秒生成专属报告' },
+                  { icon: <Sparkles size={18} />, text: '完全免费，无需注册' },
+                ].map((item, i) => (
+                  <div key={i} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                    <div style={{
+                      width: 36, height: 36, borderRadius: '50%',
+                      background: 'rgba(200,169,81,0.15)', color: '#b45309',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0
+                    }}>
+                      {item.icon}
+                    </div>
+                    <span style={{ color: '#44403c', fontSize: 14, fontWeight: 500 }}>{item.text}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link to="/policy-radar" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                background: 'linear-gradient(135deg, #b45309, #d97706)',
+                color: '#fff', padding: '14px 32px', borderRadius: 12,
+                fontWeight: 700, fontSize: 16, textDecoration: 'none',
+                boxShadow: '0 4px 20px rgba(180,83,9,0.3)',
+                transition: 'all 0.3s',
+              }}>
+                <Sparkles size={20} />
+                免费政策匹配
+                <ArrowRight size={18} />
+              </Link>
+            </div>
+
+            {/* Right: Preview card */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div style={{
+                background: '#fff',
+                borderRadius: 20,
+                boxShadow: '0 20px 60px rgba(0,0,0,0.08)',
+                overflow: 'hidden',
+                width: '100%',
+                maxWidth: 420,
+                border: '1px solid rgba(200,169,81,0.2)'
+              }}>
+                <div style={{
+                  background: 'linear-gradient(135deg, #1a3a5c, #2563a8)',
+                  padding: '20px 24px',
+                  color: '#fff'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 4 }}>
+                    <Sparkles size={20} style={{ color: '#c8a951' }} />
+                    <span style={{ fontWeight: 700, fontSize: 16 }}>AI 政策匹配报告</span>
+                  </div>
+                  <div style={{ fontSize: 12, color: '#94a3b8' }}>Policy Match Report</div>
+                </div>
+                <div style={{ padding: 24 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 20 }}>
+                    <div style={{
+                      width: 40, height: 40, borderRadius: 10,
+                      background: '#f0f4f8', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      color: '#1a3a5c', fontWeight: 800, fontSize: 14
+                    }}>示例</div>
+                    <div>
+                      <div style={{ fontWeight: 600, fontSize: 14, color: '#1e293b' }}>XX科技有限公司</div>
+                      <div style={{ fontSize: 12, color: '#94a3b8' }}>制造业 · 年营收 2000 万</div>
+                    </div>
+                  </div>
+
+                  {[
+                    { match: '95%', name: '国家高新技术企业认定', sub: '税收减免 15%' },
+                    { match: '88%', name: '河北省科技型中小企业', sub: '资金补贴 5-10 万' },
+                    { match: '82%', name: '专精特新中小企业', sub: '资金补贴 20-50 万' },
+                  ].map((item, i) => (
+                    <div key={i} style={{
+                      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      padding: '12px 0',
+                      borderBottom: i < 2 ? '1px solid #f1f5f9' : 'none'
+                    }}>
+                      <div>
+                        <div style={{ fontWeight: 600, fontSize: 13, color: '#1e293b' }}>{item.name}</div>
+                        <div style={{ fontSize: 12, color: '#64748b' }}>{item.sub}</div>
+                      </div>
+                      <span style={{
+                        padding: '4px 10px', borderRadius: 20,
+                        background: item.match === '95%' ? '#dcfce7' : item.match === '88%' ? '#fef9c3' : '#fee2e2',
+                        color: item.match === '95%' ? '#166534' : item.match === '88%' ? '#854d0e' : '#991b1b',
+                        fontSize: 12, fontWeight: 700
+                      }}>
+                        匹配 {item.match}
+                      </span>
+                    </div>
+                  ))}
+
+                  <div style={{
+                    marginTop: 20, padding: '16px',
+                    background: 'linear-gradient(135deg, rgba(200,169,81,0.1), rgba(26,58,92,0.05))',
+                    borderRadius: 12, textAlign: 'center'
+                  }}>
+                    <div style={{ fontSize: 24, fontWeight: 800, color: '#b45309', marginBottom: 4 }}>
+                      预计可获补贴 <span style={{ fontSize: 28 }}>30-80</span> 万元
+                    </div>
+                    <div style={{ fontSize: 12, color: '#78716c' }}>* 实际金额以审批结果为准</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <style>{`
+          @media (max-width: 768px) {
+            .radar-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
           }
         `}</style>
       </section>

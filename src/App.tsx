@@ -5,6 +5,7 @@ import About from './pages/About'
 import Services from './pages/Services'
 import ClientCenter from './pages/ClientCenterNoLayout'
 import Contact from './pages/Contact'
+import PolicyRadar from './pages/PolicyRadar'
 import './index.css'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/services" element={<Services />} />
           <Route path="/client" element={<ClientCenter />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/policy-radar" element={<PolicyRadar />} />
         </Routes>
       </Layout>
     </BrowserRouter>
